@@ -5,3 +5,5 @@ __pycache__/
 data/raw/
 .DS_Store
 notebooks/.ipynb_checkpoints/
+data/processed/master_deliveries.csv
+data/models/impact_model.pkl
