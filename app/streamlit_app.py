@@ -16,7 +16,11 @@ st.set_page_config(
 @st.cache_data
 def load_data():
     features = pd.read_csv("data/processed/player_features.csv")
-    master   = pd.read_csv("data/processed/master_deliveries.csv")
+    # Load IPL data only for charts (smaller file)
+    try:
+        master = pd.read_csv("data/processed/ipl_all.csv")
+    except FileNotFoundError:
+        master = pd.DataFrame()  # empty fallback
     return features, master
 
 @st.cache_resource
