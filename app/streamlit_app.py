@@ -25,10 +25,18 @@ def load_data():
 
 @st.cache_resource
 def load_models():
-    with open("data/models/impact_model.pkl","rb") as f:
-        model = pickle.load(f)
-    with open("data/models/kmeans_model.pkl","rb") as f:
-        kmeans = pickle.load(f)
+    model = None
+    kmeans = None
+    try:
+        with open("data/models/impact_model.pkl","rb") as f:
+            model = pickle.load(f)
+    except FileNotFoundError:
+        pass
+    try:
+        with open("data/models/kmeans_model.pkl","rb") as f:
+            kmeans = pickle.load(f)
+    except FileNotFoundError:
+        pass
     return model, kmeans
 
 features, master = load_data()
